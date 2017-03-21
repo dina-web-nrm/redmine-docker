@@ -3,7 +3,8 @@ version: '2'
 services:
 
   redmine:
-    image: ink/redmine
+    #image: ink/redmine
+    image: dina/redmine:v0.1
     container_name: redmine_inki
     environment:
       - VIRTUAL_HOST=support.dina-web.net
