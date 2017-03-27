@@ -2,6 +2,8 @@
 *.gz
 *~
 *.sql
-database.yml
 *crt
 *.key
+
+database.yml
+README.html
