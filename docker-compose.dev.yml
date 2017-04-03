@@ -10,8 +10,8 @@ services:
       - REDMINE_DB_MYSQL=mariadb_redmine
       - REDMINE_DB_PASSWORD=secr3t
     volumes:
-      - ./redmine-mail:/usr/src/redmine/config
-      - ./redmine-files:/usr/src/redmine/files
+      #make - ./redmine-mail:/usr/src/redmine/config
+      - ./redmine-files:/usr/src/redmine/files:ro
     depends_on:
       - mariadb
     restart: always
