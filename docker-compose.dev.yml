@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+
+  redmine:
+    image: dina/redmine:v0.1
+    container_name: redmine_inki
+    environment:
+      - VIRTUAL_HOST=support.dina-web.net
+      - REDMINE_DB_MYSQL=mariadb_redmine
+      - REDMINE_DB_PASSWORD=secr3t
+    volumes:
+      - ./redmine-mail:/usr/src/redmine/config
+      - ./redmine-files:/usr/src/redmine/files
+    depends_on:
+      - mariadb
+    restart: always
+
+  mariadb:
+    image: mariadb:10.1
+    container_name: mariadb_redmine
+    environment:
+      MYSQL_DATABASE: redmine
+      MYSQL_ROOT_PASSWORD: secr3t
+    volumes:
+      - ./redminedb-init.d:/docker-entrypoint-initdb.d
+    # - ./database:/var/lib/mysql    
+    restart: always
+
+  dnsmasq:
+    image: andyshinn/dnsmasq:2.76
+    command: --log-facility=-
+    container_name: dnsmasq
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 172.17.0.1:53:53/tcp
+      - 172.17.0.1:53:53/udp
+
+  proxy:
+    image: jwilder/nginx-proxy
+    container_name: support.dina-web.net
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx-proxy-certs:/etc/nginx/certs:ro
