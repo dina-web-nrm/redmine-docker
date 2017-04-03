@@ -5,26 +5,31 @@
 This project is based on the docker redmine version 3.3.2 (http://www.redmine.org/projects/redmine/wiki/Download) <p>
 **Additional** 3 themes + 1 agile-plugin (agile-light) <p>
 
-**NB-1: Import a database** <p>
+**NB-1: How to Import a database** <p>
 if you would like to export your redmine-databas from an earlier version to this on, put the sql-file in the redminedb-init.d-directory before you do: <p>
 ```
 make 
 ```
 
-**NB-2: configure the email-server** <p> 
+**NB-2: How to configure the email-server** <p> 
 If you would like to use the dina-mailserver or any other mailserver.
 You must set your email-credentials in the file [REDMINE-DOCKER]/redmine_extended/config/configuration.yml before you run:<p>
 ```
 make build
 ```
 
-**NB-3: Agile-plugin fix** <p>
+**NB-3: How to install Agile-plugin fix, a 'post-script' ** <p>
 This 'recipe' logs into the redmine-container and runs a bash-script -be sure that you have the correct container name for 'redmine' before running it
 ```
 make post-install
 ```
 
 ## In Development
+
+**special file : docker-compose.dev.yml** <p>
+```
+'make up-dev'
+```
 
 * redmine 
 * mariadb 
@@ -35,33 +40,13 @@ make post-install
 
 ## In Production
 
-You have to make some adjustment before going to production.
-You have to edit the docker-compose.yml-file
-
-* Remove the 'dnsmasq'-service from docker-compose.yml
-* If Production already is running a proxy-service remove the 'proxy'-service from docker-compose.yml
-    * remember to put your *.crt and *.key-file into the directory of the existing proxy
-
-Your 'pruned' new **docker-compoose.yml** would look like this :
-
+**special file : docker-compose.prod.yml ** <p>
 ```
-redmine:
-    image: dina/redmine:v0.1
-    environment:
-      - VIRTUAL_HOST=support.dina-web.net
-      - REDMINE_DB_MYSQL=mariadb_redmine
-      - REDMINE_DB_PASSWORD=secr3t
-    links:
-      - mariadb:mariadb_redmine
-
-  mariadb:
-    image: mariadb:10.1
-    environment:
-      MYSQL_DATABASE: redmine
-      MYSQL_ROOT_PASSWORD: secr3t
-    volumes:
-      - ./redminedb-init.d:/docker-entrypoint-initdb.d
+'make up-prod'
 ```
+
+* redmine 
+* mariadb 
 
 ## Components
 
@@ -82,11 +67,15 @@ redmine:
 * number of plugins : 1
 * see the fetch_themes_and_plugins.sh
 
-# Configurating Docker
+# Configurating SSL
 
-## Certificates and setting up SSL
+## Development: Certificates and setting up SSL in 
 Put the certification, crt- and key-file,  in the 'nginx-proxy-certs'-directory 
+
+## Production: Certificates and setting up SSL in development
+An external proxy (e.g DINA-Web/proxy-docker)
+Put the certification, crt- and key-file,  in the approriate directory
 
 ## Gotcha
 
-For testing locally, remember to add something like `support.dina-web.net` to your /etc/hosts file...
+For testing locally, remember to add `support.dina-web.net` to your /etc/hosts file...
