@@ -81,3 +81,12 @@ redmine:
 ### plugins
 * number of plugins : 1
 * see the fetch_themes_and_plugins.sh
+
+# Configurating Docker
+
+## Certificates and setting up SSL
+Put the certification, crt- and key-file,  in the 'nginx-proxy-certs'-directory 
+
+## Gotcha
+
+For testing locally, remember to add something like `support.dina-web.net` to your /etc/hosts file...
