@@ -13,13 +13,13 @@ make
 
 **NB-2: configure the email-server** <p> 
 If you would like to use the dina-mailserver or any other mailserver.
-You must set your email-credentials in the file redmine_extended/config/configuration.yml before you run:<p>
+You must set your email-credentials in the file [REDMINE-DOCKER]/redmine_extended/config/configuration.yml before you run:<p>
 ```
 make build
 ```
 
 **NB-3: Agile-plugin fix** <p>
-This 'recipe' logs into the redmine-container, be sure that you have the right container name for 'redmine' before running it
+This 'recipe' logs into the redmine-container and runs a bash-script -be sure that you have the correct container name for 'redmine' before running it
 ```
 make post-install
 ```
