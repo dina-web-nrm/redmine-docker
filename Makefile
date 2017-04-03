@@ -3,10 +3,13 @@
 PWD = $(shell pwd)
 DOCKERHUB_VER=v0.1
 
-all: up
+all: up-dev
 
-up: 
-	@docker-compose up -d
+up-dev: 
+	@docker-compose -f docker-compose.dev.yml up -d
+
+up-prod:
+	@docker-compose -f docker-compose.prod.yml up -d
 
 down:
 	@docker-compose down
