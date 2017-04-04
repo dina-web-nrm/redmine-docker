@@ -18,7 +18,7 @@ start with :
 ```
 cp ~/redmine-mail_config/configuration.yml.example to ~/redmine-mail_config/configuration.yml 
 ```
-Then edit the email-credentials in the  file ~/redmine-mail_config/configuration.yml
+Then edit the email-credentials in the  file ~/redmine-mail_config/configuration.yml <p>
 
 
 **NB-3: How to install Agile-plugin fix, a 'post-script' ** <p>
