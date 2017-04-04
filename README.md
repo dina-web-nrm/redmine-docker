@@ -11,12 +11,15 @@ if you would like to export your redmine-databas from an earlier version to this
 make 
 ```
 
-**NB-2: How to configure the email-server** <p> 
-If you would like to use the dina-mailserver or any other mailserver.
-You must set your email-credentials in the file [REDMINE-DOCKER]/redmine_extended/config/configuration.yml before you run:<p>
+**NB-2: How to configure the setting for the email-server** <p> 
+If you would like to use ar mailserver.
+start with :
+
 ```
-make build
+cp ~/redmine-mail_config/configuration.yml.example to ~/redmine-mail_config/configuration.yml 
 ```
+Then edit the email-credentials in the  file ~/redmine-mail_config/configuration.yml
+
 
 **NB-3: How to install Agile-plugin fix, a 'post-script' ** <p>
 This 'recipe' logs into the redmine-container and runs a bash-script -be sure that you have the correct container name for 'redmine' before running it
