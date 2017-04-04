@@ -1,13 +1,10 @@
 FROM redmine:3.3.2
 
-MAINTAINER "Swedish Natural History Museum, BIO-unit" <inkimar@gmail.com>
+MAINTAINER "Swedish Natural History Museum, BIO-unit" <inkimar at gmail.com>
 
 RUN apt-get update -q && apt-get install unzip
 
 WORKDIR /usr/src/redmine
-
-#mail-configuration
-COPY config/configuration.yml config
 
 # THEMES
 COPY themes/v0.1.tar.gz public/themes
