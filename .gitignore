@@ -6,4 +6,8 @@
 *.key
 
 database.yml
+configuration.yml
+
 README.html
+.Rhistory
+
