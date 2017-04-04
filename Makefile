@@ -11,8 +11,11 @@ up-dev:
 up-prod:
 	@docker-compose -f docker-compose.prod.yml up -d
 
-down:
-	@docker-compose down
+down-dev:
+	@docker-compose -f docker-compose.dev.yml down
+
+ps-dev:
+	@docker-compose -f docker-compose.dev.yml ps
 
 fetch:
 	./fetch_themes_and_plugins.sh
