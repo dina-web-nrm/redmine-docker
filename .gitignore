@@ -5,6 +5,8 @@
 *crt
 *.key
 
+.env
+
 database.yml
 configuration.yml
 
