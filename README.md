@@ -12,16 +12,16 @@ make
 ```
 
 **NB-2: How to configure the setting for the email-server** <p> 
-If you would like to use ar mailserver.
-start with :
+If you would like to use a mailserver.<p>
+1. copy the configuration.yml.example file to configuration.yml
 
 ```
 cp ~/redmine-mail_config/configuration.yml.example to ~/redmine-mail_config/configuration.yml 
 ```
-Then edit the email-credentials in the  file ~/redmine-mail_config/configuration.yml <p>
+2. Then edit the email-credentials in the  file ~/redmine-mail_config/configuration.yml <p>
 
 
-**NB-3: How to install Agile-plugin fix, a 'post-script' ** <p>
+**NB-3: How to install the Agile-plugin, need to run a 'post-script'** <p>
 This 'recipe' logs into the redmine-container and runs a bash-script -be sure that you have the correct container name for 'redmine' before running it
 ```
 make post-install
