@@ -24,18 +24,24 @@ services:
       MYSQL_ROOT_PASSWORD: secr3t
     volumes:
       - ./redminedb-init.d:/docker-entrypoint-initdb.d
-    # - ./database:/var/lib/mysql    
     restart: always
 
-  dnsmasq:
-    image: andyshinn/dnsmasq:2.76
-    command: --log-facility=-
-    container_name: dnsmasq
-    cap_add:
-      - NET_ADMIN
+  #dnsmasq:
+  #  image: andyshinn/dnsmasq:2.76
+  #  command: --log-facility=-
+  #  container_name: dnsmasq
+  #  cap_add:
+  #    - NET_ADMIN
+  #  ports:
+  #    - 172.17.0.1:53:53/tcp
+  #    - 172.17.0.1:53:53/udp
+
+  dnsdock:
+    image: aacebedo/dnsdock:v1.15.0-amd64
     ports:
-      - 172.17.0.1:53:53/tcp
-      - 172.17.0.1:53:53/udp
+     - 172.17.0.1:53:53/udp
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
   proxy:
     image: jwilder/nginx-proxy
