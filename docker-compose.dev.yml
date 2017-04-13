@@ -3,7 +3,7 @@ version: '2'
 services:
 
   redmine:
-    image: dina/redmine:v0.1
+    image: dina/redmine:v02
     container_name: redmine_inki
     environment:
       - VIRTUAL_HOST=support.dina-web.net
@@ -11,6 +11,8 @@ services:
       - REDMINE_DB_PASSWORD=secr3t
     volumes:
       - ./redmine-mail_config/configuration.yml:/usr/src/redmine/config/configuration.yml
+      - ./redmine-harvest/.env:/usr/src/redmine/mail-script/.env
+      - ./redmine-harvest/receive_imap.sh:/usr/src/redmine/mail-script/receive_imap.sh
       - ./redmine-files:/usr/src/redmine/files
     depends_on:
       - mariadb
@@ -26,22 +28,22 @@ services:
       - ./redminedb-init.d:/docker-entrypoint-initdb.d
     restart: always
 
-  #dnsmasq:
-  #  image: andyshinn/dnsmasq:2.76
-  #  command: --log-facility=-
-  #  container_name: dnsmasq
-  #  cap_add:
-  #    - NET_ADMIN
-  #  ports:
-  #    - 172.17.0.1:53:53/tcp
-  #    - 172.17.0.1:53:53/udp
-
-  dnsdock:
-    image: aacebedo/dnsdock:v1.15.0-amd64
+  dnsmasq: #at nrm
+    image: andyshinn/dnsmasq:2.76
+    command: --log-facility=-
+    container_name: dnsmasq
+    cap_add:
+      - NET_ADMIN
     ports:
-     - 172.17.0.1:53:53/udp
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - 172.17.0.1:53:53/tcp
+      - 172.17.0.1:53:53/udp
+
+  #dnsdock: #at home
+  #  image: aacebedo/dnsdock:v1.15.0-amd64
+  #  ports:
+  #   - 172.17.0.1:53:53/udp
+  #  volumes:
+  #    - /var/run/docker.sock:/var/run/docker.sock
 
   proxy:
     image: jwilder/nginx-proxy

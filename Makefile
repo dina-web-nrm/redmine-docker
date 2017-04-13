@@ -1,7 +1,7 @@
 #!make
 
 PWD = $(shell pwd)
-DOCKERHUB_VER=v0.1
+DOCKERHUB_VER=v02
 
 all: up-dev
 
@@ -32,3 +32,6 @@ release:
 
 test:
 	xdg-open https://support.dina-web.net
+
+logs-dev:
+	docker-compose -f docker-compose.dev.yml logs -f
