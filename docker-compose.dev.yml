@@ -3,7 +3,8 @@ version: '2'
 services:
 
   redmine:
-    image: dina/redmine:v02
+    #image: dina/redmine:v0.1
+    image: dina/redmine:v0.2
     container_name: redmine_inki
     environment:
       - VIRTUAL_HOST=support.dina-web.net
@@ -11,6 +12,7 @@ services:
       - REDMINE_DB_PASSWORD=secr3t
     volumes:
       - ./redmine-mail_config/configuration.yml:/usr/src/redmine/config/configuration.yml
+     #- ./redmine-db_config/database.yml:/usr/src/redmine/config/database.yml
       - ./redmine-harvest/.env:/usr/src/redmine/mail-script/.env
       - ./redmine-harvest/receive_imap.sh:/usr/src/redmine/mail-script/receive_imap.sh
       - ./redmine-files:/usr/src/redmine/files

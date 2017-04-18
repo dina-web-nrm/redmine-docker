@@ -1,7 +1,7 @@
 #!make
 
 PWD = $(shell pwd)
-DOCKERHUB_VER=v02
+DOCKERHUB_VER=v0.2
 
 all: up-dev
 
