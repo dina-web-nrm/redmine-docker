@@ -33,4 +33,4 @@ RUN mkdir -p \
 COPY cronjob/harvest_mail-cron /etc/cron.d/harvest_mail-cron
 RUN crontab /etc/cron.d/harvest_mail-cron
 
-CMD ["cron", "-f"]
+#CMD ["cron", "-f"] #2017-04-17 (https://github.com/docker-library/redmine/blob/5453a92c4f8d18e59de9162c4030fb277bc72e8f/3.3/Dockerfile)
