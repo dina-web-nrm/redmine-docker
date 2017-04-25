@@ -30,6 +30,6 @@ RUN mkdir -p \
 /usr/src/redmine/mail-script
 
 USER root
-#testing cron, 
+#testing cron, check cron with -> /etc/init.d/cron status
 COPY cronjob/harvest_mail-cron /etc/cron.d/harvest_mail-cron
 RUN crontab /etc/cron.d/harvest_mail-cron
