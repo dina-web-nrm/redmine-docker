@@ -1,1 +1,2 @@
-* * * * * /usr/src/redmine/mail-script/receive_imap.sh
+* * * * * /bin/bash -l -c '/usr/src/redmine/mail-script/receive_imap.sh'
+#
