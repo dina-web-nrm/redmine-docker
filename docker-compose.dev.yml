@@ -6,7 +6,7 @@ services:
     #image: dina/redmine:v0.1
     image: dina/redmine:v0.2
     container_name: redmine_inki
-    environment:
+    environment: # ersätt med ./redmine-harvest/.env
       - VIRTUAL_HOST=support.dina-web.net
       - REDMINE_DB_MYSQL=mariadb_redmine
       - REDMINE_DB_PASSWORD=secr3t
