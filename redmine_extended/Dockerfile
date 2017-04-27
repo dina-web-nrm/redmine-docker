@@ -2,7 +2,10 @@ FROM redmine:3.3.2
 
 MAINTAINER "Swedish Natural History Museum, BIO-unit" <inkimar at gmail.com>
 
-RUN apt-get update -q && apt-get install unzip && apt-get install vim -y && apt-get install cron -y
+RUN apt-get update -q && apt-get install -y unzip vim  cron 
+
+# nya för cronjobbet
+RUN apt-get install -y make gcc  pkg-config imagemagick libmagickwand-dev libmysqlclient-dev 
 
 WORKDIR /usr/src/redmine
 
@@ -26,6 +29,15 @@ RUN unzip  plugins/redmine_agile-1_4_2-light.zip  -d plugins
 COPY plugins/post-install.sh plugins
 RUN chmod 755 plugins/post-install.sh
 
+# preparing cronjob
+COPY etc.env /etc/environment
+COPY Gemfile /root
+#RUN gem install mysql2 -v '0.4.5'
+
+RUN bundle install --gemfile=/usr/src/redmine/Gemfile
+RUN bundle install --gemfile=/root/Gemfile
+
+
 RUN mkdir -p \
 /usr/src/redmine/mail-script
 
@@ -33,3 +45,5 @@ USER root
 #testing cron, check cron with -> /etc/init.d/cron status
 COPY cronjob/harvest_mail-cron /etc/cron.d/harvest_mail-cron
 RUN crontab /etc/cron.d/harvest_mail-cron
+
+
