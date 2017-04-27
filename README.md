@@ -70,6 +70,19 @@ make post-install
 * number of plugins : 1
 * see the fetch_themes_and_plugins.sh
 
+### mail-harvesting
+Work-in-progress
+
+cron-daemon is not started automatically
+
+*/etc/init.d/cron status
+*/etc/init.d/cron start
+*/etc/init.d/cron stop
+
+The cron-job runs once a minute.
+harvests from 1 single demo-project called 'myproject'
+The 'harvesting'-script creates a log file ( not necessary)
+
 # Configurating SSL
 
 ## Development: Certificates and setting up SSL in 
