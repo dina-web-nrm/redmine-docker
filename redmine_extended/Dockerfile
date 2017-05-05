@@ -29,10 +29,13 @@ RUN unzip  plugins/redmine_agile-1_4_2-light.zip  -d plugins
 COPY plugins/post-install.sh plugins
 RUN chmod 755 plugins/post-install.sh
 
-# preparing cronjob
+#root certificate 
+RUN wget -O /usr/local/share/ca-certificates/bundle.zip https://namecheap.simplekb.com/SiteContents/2-7C22D5236A4543EB827F3BD8936E153E/media/COMODO_DV_SHA-256_bundle.crt.zip && cd /usr/local/share/ca-certificates && unzip bundle.zip && rm -rf __MACOSX
+RUN dpkg-reconfigure -f noninteractive ca-certificates
+
+# preparing cronjob, environments variables and Gemfile
 COPY etc.env /etc/environment
 COPY Gemfile /root
-#RUN gem install mysql2 -v '0.4.5'
 
 RUN bundle install --gemfile=/usr/src/redmine/Gemfile
 RUN bundle install --gemfile=/root/Gemfile
@@ -46,4 +49,6 @@ USER root
 COPY cronjob/harvest_mail-cron /etc/cron.d/harvest_mail-cron
 RUN crontab /etc/cron.d/harvest_mail-cron
 
+#test 
+#CMD cron
 
