@@ -1,6 +1,6 @@
 # Dockerized Redmine with themes and plugins
 
-[![AGPLv3 License](http://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE)
+<!-- [![AGPLv3 License](http://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE) -->
 
 This project is based on the docker redmine version 3.3.2 (http://www.redmine.org/projects/redmine/wiki/Download) <p>
 **Additional** 3 themes + 1 agile-plugin (agile-light) <p>
@@ -70,23 +70,26 @@ make post-install
 * number of plugins : 1
 * see the fetch_themes_and_plugins.sh
 
-### mail-harvesting
-Work-in-progress
+### mail-harvesting , coupling between an email-address and a project
+**NB 1:** cron-daemon is not started automatically in the redmine-docker container.
 
-cron-daemon is not started automatically
+* /etc/init.d/cron status
+* /etc/init.d/cron start
+* /etc/init.d/cron stop
 
-*/etc/init.d/cron status
-*/etc/init.d/cron start
-*/etc/init.d/cron stop
+$ crontab -l 
+* * * * * /bin/bash -l -c '/usr/src/redmine/mail-script/receive_imap.sh'
 
-The cron-job runs once a minute.
-harvests from 1 single demo-project called 'myproject'
-The 'harvesting'-script creates a log file ( not necessary)
+**NB 2:for test** This cron-job runs once a minute.
+
+coupling between an email-address and a project is done in the file /usr/src/redmine/mail-script/receive_imap.sh
+
+**NB 3:for test** The 'harvesting'-script creates a log file ( not necessary)
 
 # Configurating SSL
 
 ## Development: Certificates and setting up SSL in 
-Put the certification, crt- and key-file,  in the 'nginx-proxy-certs'-directory 
+Put the certification, crt- and key-file,  in the local 'nginx-proxy-certs'-directory 
 
 ## Production: Certificates and setting up SSL in development
 An external proxy (e.g DINA-Web/proxy-docker)
@@ -94,4 +97,6 @@ Put the certification, crt- and key-file,  in the approriate directory
 
 ## Gotcha
 
-For testing locally, remember to add `support.dina-web.net` to your /etc/hosts file...
+For testing locally:
+1. remember to add `support.dina-web.net` to your /etc/hosts file...
+2. if you are using a locally deployed mail-server ( https://github.com/DINA-Web/mail-docker  ) add `mail.dina-web.net` to your /etc/hosts file...
