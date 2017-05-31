@@ -1,7 +1,7 @@
 #!make
 
 PWD = $(shell pwd)
-DOCKERHUB_VER=v0.2
+DOCKERHUB_VER=v0.3
 
 all: up-dev
 
@@ -21,7 +21,7 @@ fetch:
 	./fetch_themes_and_plugins.sh
 
 post-install:
-	docker exec redmine_inki bash -c '/usr/src/redmine/plugins/post-install.sh'
+	docker exec dina_redmine bash -c '/usr/src/redmine/plugins/post-install.sh'
 
 build: 
 	./fetch_themes_and_plugins.sh
@@ -30,7 +30,11 @@ build:
 release:
 	docker push dina/redmine:${DOCKERHUB_VER}
 
-test:
+test-ping:
+	@echo "checking to see if the mailserver is present"
+	@docker exec -it dina_redmine bash -c 'ping mail.dina-web.net'
+
+test-web:
 	xdg-open https://support.dina-web.net
 
 logs-dev:
