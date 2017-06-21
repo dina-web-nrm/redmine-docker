@@ -80,6 +80,10 @@ make post-install
 $ crontab -l 
 * * * * * /bin/bash -l -c '/usr/src/redmine/mail-script/receive_imap.sh'
 
+### script and .env-file
+* /usr/src/redmine/mail-script/receive_imap.sh
+* /usr/src/redmine/mail-script/.env
+
 **NB 2:for test** This cron-job runs once a minute.
 
 coupling between an email-address and a project is done in the file /usr/src/redmine/mail-script/receive_imap.sh
