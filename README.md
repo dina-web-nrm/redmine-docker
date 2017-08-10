@@ -21,7 +21,7 @@ cp ~/redmine-mail_config/configuration.yml.example to ~/redmine-mail_config/conf
 Then edit the email-credentials in the  file ~/redmine-mail_config/configuration.yml <p>
 
 
-**NB-3: How to install Agile-plugin fix, a 'post-script' ** <p>
+**NB-3: How to install Agile-plugin fix, a 'post-script'** <p>
 This 'recipe' logs into the redmine-container and runs a bash-script -be sure that you have the correct container name for 'redmine' before running it
 ```
 make post-install
