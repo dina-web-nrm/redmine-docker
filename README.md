@@ -90,7 +90,7 @@ make post-install
 * /etc/init.d/cron start
 * /etc/init.d/cron stop
 
-$ crontab -l 
+`$ crontab -l`
 `* * * * * /bin/bash -l -c '/usr/src/redmine/mail-script/receive_imap.sh'`
 
 ### script and .env-file
@@ -114,10 +114,11 @@ Put the certification, crt- and key-file,  in the approriate directory
 
 ## Gotchas
 
-For testing locally:
+### For testing locally:
 1. remember to add `support.dina-web.net` to your /etc/hosts file...
 2. if you are using a locally deployed mail-server (https://github.com/DINA-Web/mail-docker) add `mail.dina-web.net` to your /etc/hosts file...
 
-redmine harvesting mail and creating issues:
+### redmine harvesting mail and creating issues:
 1. when sending mails that becomes issue in project x , remember that the mail must be sent from an account that is a registered user in the current redmine-project (in the `support.dina-web.net`-system)
 2. obs. the receive_imap.sh must use the port 993
+3. **NB** if you read the incoming mail in i.e. thunderbird then redmine will not read and create an issue from that incoming email
