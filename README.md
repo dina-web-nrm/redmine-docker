@@ -6,10 +6,10 @@ This project is based on the docker redmine version 3.3.2 (http://www.redmine.or
 **Additional** 3 themes + 1 agile-plugin (agile-light) <p>
 
 **NB-1: How to Import a database** <p>
-if you would like to export your redmine-databas from an earlier version to this one, put the sql-file in the redminedb-init.d-directory before you do: <p>
-```
-make 
-```
+if you would like to export your redmine-databas from an earlier version:
+1. use mysqldump -u root -p<secret> redmine > redmine_<date>.sql
+2. place the redmine_<date>.sql in the redminedb-init.d-directory
+3. ``` make ```
 
 **NB-2: How to configure the settings for an email-server (for redmine to send alerts)** <p> 
 If you would like to use a mailserver for sending alerts.<p>
