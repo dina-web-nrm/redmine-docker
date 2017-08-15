@@ -32,7 +32,9 @@ cp ~/redmine-mail_config/configuration.yml.example to ~/redmine-mail_config/conf
         user_name: <the email address that you will use to send alerts>
         password:  <password to the email-address above>
 ```
-
+3. ``` make ```
+4. check by going to 'administration' -> 'settings' -> 'Email notifications' -> check the settings ( Emission email address should point to a valid email)
+ 
 **NB-3: How to install the Agile-plugin, you must run the  'post-script'-recipe** <p>
 This 'recipe' logs into the redmine-container and runs a bash-script -be sure that you have the correct container name for 'redmine' before running it
 ```
