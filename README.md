@@ -57,7 +57,7 @@ make post-install
 
 ## In Production
 
-**special file : docker-compose.prod.yml ** <p>
+**special file : docker-compose.prod.yml** <p>
 ```
 'make up-prod'
 ```
