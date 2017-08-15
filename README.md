@@ -8,7 +8,7 @@ This project is based on the docker redmine version 3.3.2 (http://www.redmine.or
 **NB-1: How to Import a database** <p>
 if you would like to export your redmine-databas from an earlier version:
 1. run  ``` mysqldump -u root -p<secret> redmine > redmine_<date>.sql ```
-2. place the redmine_<date>.sql in the redminedb-init.d-directory
+2. copy the ``` redmine_<date>.sql ``` to the redminedb-init.d-directory
 3. ``` make ```
 
 **NB-2: How to configure the settings for an email-server (for redmine to send alerts)** <p> 
