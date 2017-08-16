@@ -6,6 +6,9 @@
       - REDMINE_DB_PASSWORD=secr3t
     volumes:
       - ./redmine-files:/usr/src/redmine/files
+      - ./redmine-mail_config/configuration.yml:/usr/src/redmine/config/configuration.yml
+      - ./redmine-harvest/.env:/usr/src/redmine/mail-script/.env
+      - ./redmine-harvest/receive_imap.sh:/usr/src/redmine/mail-script/receive_imap.sh
     links:
       - mariadb:mariadb_redmine
 
