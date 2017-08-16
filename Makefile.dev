@@ -3,16 +3,19 @@
 PWD = $(shell pwd)
 DOCKERHUB_VER=v0.3
 
-all: up
+all: up-dev
 
-up: 
-	@docker-compose up -d
+up-dev: 
+	@docker-compose -f docker-compose.dev.yml up -d
 
-down:
-	@docker-compose down
+up-prod:
+	@docker-compose -f docker-compose.prod.yml up -d
 
-ps:
-	@docker-compose  ps
+down-dev:
+	@docker-compose -f docker-compose.dev.yml down
+
+ps-dev:
+	@docker-compose -f docker-compose.dev.yml ps
 
 fetch:
 	./fetch_themes_and_plugins.sh
@@ -39,5 +42,5 @@ test-web:
 test-openssl:
 	@docker exec -it dina_redmine bash -c 'openssl s_client -connect mail.dina-web.net:993'
 
-logs:
-	docker-compose logs -f
+logs-dev:
+	docker-compose -f docker-compose.dev.yml logs -f
