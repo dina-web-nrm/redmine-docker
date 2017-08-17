@@ -1,4 +1,5 @@
 #!make
+include .env
 
 PWD = $(shell pwd)
 DOCKERHUB_VER=v0.3
@@ -31,6 +32,10 @@ release:
 test-ping:
 	@echo "checking to see if the mailserver is present"
 	@docker exec -it dina_redmine bash -c 'ping mail.dina-web.net'
+
+test-db:
+	@echo "\ncheck the number of users"
+	@docker exec -it redminedocker_mariadb_1 sh -c "mysql -u $(user) -p$(psw) -D$(database) -e 'select count(*) from users;'"
 
 test-web:
 	xdg-open https://support.dina-web.net
