@@ -5,7 +5,7 @@
 This project is based on the docker redmine version 3.3.2 (http://www.redmine.org/projects/redmine/wiki/Download) <p>
 **Additional** 3 themes + 1 agile-plugin (agile-light) <p>
 
-**NB-1: How to Import a database** <p>
+## NB-1: How to Import a database
 if you would like to export your redmine-databas from an earlier version:
 1. run  ``` mysqldump -u root -p<secret> redmine > redmine_<date>.sql ```
 2. copy the ``` redmine_<date>.sql ``` to the redminedb-init.d-directory
@@ -13,7 +13,7 @@ if you would like to export your redmine-databas from an earlier version:
 4. **NB** before running 4.1 make sure you ```cp .env.template .env``` and update the credentials
 4.1 verify by running ```make test-db``` which runs ```select count(*) from users```
 
-**NB-2: How to configure the settings for an email-server (for redmine to send alerts)** <p> 
+## How to configure the settings for an email-server (for redmine to send alerts) 
 If you would like to use a mailserver for sending alerts.<p>
 1. copy the configuration.yml.example file to configuration.yml
 
@@ -36,7 +36,7 @@ cp ~/redmine-mail_config/configuration.yml.example to ~/redmine-mail_config/conf
 3. ``` make ```
 4. check by logging in to the site -> go to 'administration' -> 'settings' -> 'Email notifications' -> check the settings ( Emission email address should point to a valid email)
  
-**NB-3: How to install the Agile-plugin, you must run the  'post-script'-recipe** <p>
+## NB-3: How to install the Agile-plugin, you must run the  'post-script'-recipe
 This 'recipe' logs into the redmine-container and runs a bash-script -be sure that you have the correct container name for 'redmine' before running it
 ```
 make post-install
