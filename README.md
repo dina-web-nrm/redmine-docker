@@ -85,7 +85,7 @@ make post-install
 * number of plugins : 1
 * see the fetch_themes_and_plugins.sh
 
-### mail-harvesting , coupling between an email-address and a project
+## mail-harvesting , how to create a couple between an email-address and a project
 
 **NB 1:** before using cron test the `receive_imap.sh` manually
 **NB 2:** cron-daemon is not started automatically in the redmine-docker container.
@@ -94,10 +94,10 @@ make post-install
 * /etc/init.d/cron start
 * /etc/init.d/cron stop
 
-`$ crontab -l`
+`$ crontab -l` <p>
 `* * * * * /bin/bash -l -c '/usr/src/redmine/mail-script/receive_imap.sh'`
 
-### script and .env-file
+### the harvesting-script and  the .env-file
 * /usr/src/redmine/mail-script/receive_imap.sh
 * /usr/src/redmine/mail-script/.env
 
