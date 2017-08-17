@@ -10,7 +10,8 @@ if you would like to export your redmine-databas from an earlier version:
 1. run  ``` mysqldump -u root -p<secret> redmine > redmine_<date>.sql ```
 2. copy the ``` redmine_<date>.sql ``` to the redminedb-init.d-directory
 3. ``` make ```
-4. verify by logging into the mariadb-container , log in to the database and check the content
+4. **NB** before running 4.1 make sure you ```cp .env.template .env``` and update the credentials
+4.1 verify by running ```make test-db``` which runs ```select count(*) from users```
 
 **NB-2: How to configure the settings for an email-server (for redmine to send alerts)** <p> 
 If you would like to use a mailserver for sending alerts.<p>
