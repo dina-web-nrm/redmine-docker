@@ -20,7 +20,7 @@ fetch:
 
 #post-install, final step to get the agile plugin working.
 post-install: 
-	docker exec dina_redmine bash -c '/usr/src/redmine/plugins/post-install.sh'
+	docker exec redminedocker_redmine_1 bash -c '/usr/src/redmine/plugins/post-install.sh'
 
 build: 
 	./fetch_themes_and_plugins.sh
@@ -31,7 +31,7 @@ release:
 
 test-ping:
 	@echo "checking to see if the mailserver is present"
-	@docker exec -it dina_redmine bash -c 'ping mail.dina-web.net'
+	@docker exec -it redminedocker_redmine_1 bash -c 'ping mail.dina-web.net'
 
 test-db:
 	@echo "\ncheck the number of users"
@@ -42,7 +42,7 @@ test-web:
 
 #check the connection to mailserver, openssl
 test-openssl:
-	@docker exec -it dina_redmine bash -c 'openssl s_client -connect mail.dina-web.net:993'
+	@docker exec -it redminedocker_redmine_1 bash -c 'openssl s_client -connect mail.dina-web.net:993'
 
 logs:
 	docker-compose logs -f
