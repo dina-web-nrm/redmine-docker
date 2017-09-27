@@ -14,8 +14,6 @@ else
     mkdir -p $TARGET_DIR
 fi
 
-#test -d $TARGET_DIR | mkdir $TARGET_DIR
-
 docker exec -it mariadb_redmine sh -c "mysqldump -u $user -p$psw $db > /tmp/redmine_$NOW.sql"
 docker cp mariadb_redmine:/tmp/redmine_$NOW.sql $TARGET_DIR
 
@@ -29,6 +27,8 @@ tar -zcvf $TARGET/backup_$NOW.tar.gz $TARGET/$NOW
 echo "encrypting the tar-file"
 gpg2 --yes --batch --passphrase-file ./.env/.passfile -c  $TARGET/backup_$NOW.tar.gz
 
-# TODO
-##secure copy , scp, backup_$NOW.tar.gz
+# TODO 1
+##secure copy , scp, backup_$NOW.tar.gpg to which location ?
+# TODO 2
+##check that the logs will take to much 
 
