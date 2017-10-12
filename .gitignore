@@ -9,6 +9,7 @@
 
 database.yml
 configuration.yml
+.passfile_backup
 
 README.html
 .Rhistory
