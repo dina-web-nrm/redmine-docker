@@ -1,11 +1,13 @@
+*~
 *.zip
 *.gz
-*~
+*.gpg
 *.sql
 *crt
 *.key
 
 .env
+.passfile
 
 database.yml
 configuration.yml
@@ -13,4 +15,6 @@ configuration.yml
 
 README.html
 .Rhistory
+
+backup-daily
 
