@@ -7,14 +7,16 @@
 *.key
 
 .env
-.passfile
+.passfile_backup
 
 database.yml
 configuration.yml
-.passfile_backup
 
 README.html
 .Rhistory
 
 backup-daily
+backup.log
+
+redmine-files
 
