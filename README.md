@@ -76,6 +76,10 @@ make post-install
 * based on official maridab  version 10.1.
 * https://hub.docker.com/_/mariadb/
 
+## backup of the system
+> crontab -l
+30 13 * * * cd /root/repos/redmine-docker && ./backup-to-isit.sh
+
 ## Themes and plugins
 ### themes
 * number of themes : 3
