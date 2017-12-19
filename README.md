@@ -78,6 +78,7 @@ make post-install
 
 ## backup of the system
 > crontab -l
+
 30 13 * * * cd /root/repos/redmine-docker && ./backup-to-isit.sh
 
 ## Themes and plugins
