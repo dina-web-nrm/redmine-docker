@@ -16,7 +16,7 @@ README.html
 .Rhistory
 
 backup-daily
-backup.log
+*.log
 
 redmine-files
 

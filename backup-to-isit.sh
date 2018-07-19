@@ -23,15 +23,9 @@ tar -zcvf $TARGET_DIR/redmine-files_$NOW.tar.gz redmine-files
 # tar the redmine-files&sql-dump
 tar -zcvf $TARGET/backup_$NOW.tar.gz $TARGET/$NOW
 THISHOST=$(hostname)
-IA_ID=backup_${THISHOST}_$NOW
+#IA_ID=backup_${THISHOST}_$NOW
 sleep 2
-#echo "encrypting the tar-file"
-#gpg2 --yes --batch --passphrase-file .passfile_backup -c  $TARGET/backup_$NOW.tar.gz &&
-#/usr/local/bin/ia upload $IA_ID $TARGET/backup_$NOW.tar.gz.gpg --metadata="mediatype:texts" --retries 6
-#echo "uploaded to IA on with identifier=$IA_ID" >> backup.log
 
 # uploading to biobackup
-#scp $TARGET/backup_$NOW.tar.gz.gpg biobackup:/backup/DINA-redmine
 scp $TARGET/backup_$NOW.tar.gz biobackup:/backup/DINA-redmine
 echo "uploaded '$TARGET/backup_$NOW.tar.gz.gpg' to biobackup " >> backup-logs/biobackup.log
-
