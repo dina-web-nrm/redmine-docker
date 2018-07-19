@@ -10,7 +10,7 @@ up:
 	@docker-compose up -d
 
 down:
-	@docker-compose down
+	@echo "be careful if you want to run 'docker-compose down' "
 
 ps:
 	@docker-compose  ps
