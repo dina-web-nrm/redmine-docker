@@ -14,8 +14,10 @@
 
   mariadb:
     image: mariadb:10.1
+    container_name: redmine_database
     environment:
       MYSQL_DATABASE: redmine
       MYSQL_ROOT_PASSWORD: secr3t
     volumes:
       - ./redminedb-init.d:/docker-entrypoint-initdb.d
+      - ./mysql_datadir:/var/lib/mysql
