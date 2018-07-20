@@ -7,6 +7,7 @@ This project is based on the docker redmine version 3.3.2 (http://www.redmine.or
 
 ##  How to Import a database
 if you would like to export your redmine-databas from an earlier version:
+
 1. run  ``` mysqldump -u root -p<secret> redmine > redmine_<date>.sql ```
 2. copy the ``` redmine_<date>.sql ``` to the redminedb-init.d-directory
 3. ``` make ```
@@ -66,6 +67,33 @@ make post-install
 * redmine 
 * mariadb 
 
+##  Backup and restoring a backup.
+Date: 2017-07-20
+### backup
+Today the Redmine-service is running on a machine at Digitalocean (https://www.digitalocean.com/)
+Backup is stored on the 'biobackup'-machine, maintained by NRM it-department.
+The backup script is 'backup-to-isit.sh', it is ran by cron ( owned by root ).
+```
+> crontab -l
+30 13 * * * cd /root/repos/redmine-docker && ./backup-to-isit.sh
+```
+The *files* are backed-up and the *databasedump*, these files are 'tarred' and the filename has a datestamp.
+
+The backup-to-isit.sh has the following dependencies.
+
+* .env-file with environement-varibles for the redmine-database
+* configuration of the file /root/.ssh/config ( ip-address for biobackup + user on biobackup and the private-key)
+* access to the biobackup-machine has to be granted to be able to perform an 'secure copy' (scp)
+
+
+
+
+### restoring a backup
+Do the following steps before performing 'make up'
+
+1. put the *databasedump* in the  'redminedb-init.d'-directory
+2. put the *files* in the 'redmine-files-directory
+
 ## Components
 
 ### redmine
@@ -76,10 +104,7 @@ make post-install
 * based on official maridab  version 10.1.
 * https://hub.docker.com/_/mariadb/
 
-## backup of the system
-> crontab -l
 
-30 13 * * * cd /root/repos/redmine-docker && ./backup-to-isit.sh
 
 ## Themes and plugins
 ### themes
