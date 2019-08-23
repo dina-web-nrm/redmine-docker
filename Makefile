@@ -31,7 +31,7 @@ release:
 
 test-ping:
 	@echo "checking to see if the mailserver is present"
-	@docker exec -it redminedocker_redmine_1 bash -c 'ping mail.dina-web.net'
+	@docker exec -it redmine_server bash -c 'ping mail.dina-web.net'
 
 test-db:
 	@echo "\ncheck the number of users"
