@@ -42,7 +42,7 @@ test-web:
 
 #check the connection to mailserver, openssl
 test-openssl:
-	@docker exec -it redminedocker_redmine_1 bash -c 'openssl s_client -connect mail.dina-web.net:993'
+	@docker exec -it redmine_server bash -c 'openssl s_client -connect mail.dina-web.net:993'
 
 logs:
 	docker-compose logs -f
