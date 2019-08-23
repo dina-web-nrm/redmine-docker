@@ -20,3 +20,4 @@ backup-daily
 
 redmine-files
 
+mysql_datadir/
