@@ -2,7 +2,7 @@
     image: dina/redmine:v0.3
     container_name: redmine_server
     environment:
-      - VIRTUAL_HOST=support.dina-web.net
+      - VIRTUAL_HOST=support-test.dina-web.net
       - REDMINE_DB_MYSQL=mariadb_redmine
       - REDMINE_DB_PASSWORD=secr3t
     volumes:
