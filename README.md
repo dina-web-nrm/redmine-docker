@@ -15,7 +15,7 @@ if you would like to export your redmine-databas from an earlier version:
 4.1 verify by running ```make test-db``` which runs ```select count(*) from users```
 
 ## How to configure the settings for an email-server
-* 2023-03-30*  - the mailserver mail.dina-web.net`is not running anymore , if you would like alerts, then config!
+**2023-03-30**  - the mailserver `mail.dina-web.net` is **not** running anymore , if you would like alerts, then config!
 
 ### If you would like to use a mailserver for sending alerts
 1. copy the configuration.yml.example file to configuration.yml
