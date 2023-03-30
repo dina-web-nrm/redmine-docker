@@ -2,8 +2,8 @@
 
 <!-- [![AGPLv3 License](http://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE) -->
 
-This project is based on the docker redmine version 3.3.2 (http://www.redmine.org/projects/redmine/wiki/Download) <p>
-**Additional** 3 themes + 1 agile-plugin (agile-light) <p>
+- This project is based on the docker redmine version 3.3.2 (http://www.redmine.org/projects/redmine/wiki/Download)
+- **Additional** 3 themes + 1 agile-plugin (agile-light) 
 
 ##  How to Import a database
 if you would like to export your redmine-databas from an earlier version:
@@ -14,8 +14,10 @@ if you would like to export your redmine-databas from an earlier version:
 4. **NB** before running 4.1 make sure you ```cp .env.template .env``` and update the credentials
 4.1 verify by running ```make test-db``` which runs ```select count(*) from users```
 
-## How to configure the settings for an email-server (for redmine to send alerts) 
-If you would like to use a mailserver for sending alerts.<p>
+## How to configure the settings for an email-server
+* 2023-03-30*  - the mailserver mail.dina-web.net`is not running anymore , if you would like alerts, then config!
+
+### If you would like to use a mailserver for sending alerts
 1. copy the configuration.yml.example file to configuration.yml
 
 ```
