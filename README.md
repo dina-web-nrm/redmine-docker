@@ -1,6 +1,6 @@
 # Dockerized Redmine with themes and plugins
 
-<!-- [![AGPLv3 License](http://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE) -->
+[![AGPLv3 License](http://img.shields.io/badge/license-AGPLv3-blue.svg)](LICENSE)
 
 - This project is based on the docker redmine version 3.3.2 (http://www.redmine.org/projects/redmine/wiki/Download)
 - **Additional** 3 themes + 1 agile-plugin (agile-light) 
